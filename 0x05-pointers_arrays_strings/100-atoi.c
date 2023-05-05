@@ -1,12 +1,4 @@
 #include "main.h"
-/**
- * _atoi - Program pointer to convert string to an integer
- *
- * @s: the pointer character
- *
- * Return: void
-*/
-
 
 /**
  * _strlen - Program returns the length of a string
