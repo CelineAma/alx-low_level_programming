@@ -4,36 +4,31 @@
  * _strstr - Program that locates a substring
  * @haystack: the string pointer
  * @needle: the substring
- * Return: pointe to the begining of located needle or null
+ * Return: pointer:wq to the begining of located needle or null
 */
 char *_strstr(char *haystack, char *needle)
 {
-	int i = 0, j, x;
+	char *h = haystack;
+	char *n = needle;
 
-	if (needle[0] == '\0')
-		return (haystack);
-
-	while (haystack[i] != '\0') /* iterate through haystack */
+	while (*h)
 	{
-		/* if a byte matches first char of needle */
-		/* interate through needle until match ends */
-		if (haystack[i] == needle[0])
+		n = needle;
+		h = haystack;
+		while (*n)
 		{
-			x = i, j = 0;
-			while (needle[j] != '\0')
+			if (*h == *n)
 			{
-				if (haystack[x] == needle[j])
-					x++, j++;
-				else
-					break;
-			} /* if matched throughout, return haystack */
-			if (needle[j] == '\0')
-			{
-				return (haystack + i);
+				n++;
+				h++;
 			}
+			else
+				break;
 		}
-		i++;
+		if (*n == '\0')
+			return (haystack);
+		haystack++;
 	}
-	return (NULL); /* No match */
+	return (0);
 
 }
