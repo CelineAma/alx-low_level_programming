@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * wordCounterRec - count num of words recursively
  * @str: pointer to char
@@ -25,13 +24,9 @@ int word_counter(char *str)
 		return (1 + wordCounterRec(str, 0));
 	return (wordCounterRec(str, 0));
 }
-
-
 /**
  * strtow - Program that splits string into words
- *
  * @str: string pointer
- *
  * Return: NULL if size is 0
 */
 char **strtow(char *str)
@@ -53,13 +48,13 @@ char **strtow(char *str)
 		if (*str != ' ')
 		{
 			n = 0;
-			while (str[n] != ' ')
-				n++;
+			while (*str != ' ')
+			str++, n++;
 			strDup[i] = malloc(sizeof(char) * (n + 1));
 			if (strDup[i] == NULL)
 			{
 				while (--i >= 0)
-					free(strDup[--i]);
+				free(strDup[--i]);
 				free(strDup);
 				return (NULL);
 			}
@@ -73,7 +68,7 @@ char **strtow(char *str)
 			i++;
 		}
 		str++;
-	}
-	strDup[i] = '\0';
-	return (strDup);
+		}
+		strDup[i] = '\0';
+		return (strDup);
 }
